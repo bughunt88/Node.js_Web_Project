@@ -3,16 +3,16 @@ var router   = express.Router();
 var Post     = require('../models/Post');
 
 var fs = require("fs");
-// var multer = require("multer");
-// var _storage = multer.diskStorage({
-//  destination: function (req, file, cb) {
-//    cb(null, 'uploads/');
-//   },
-//   filename: function (req, file, cb) {
-//     cb(null, file.originalname);
-//   }
-// });
-// var upload = multer({ storage: _storage });
+var multer = require("multer");
+var _storage = multer.diskStorage({
+ destination: function (req, file, cb) {
+   cb(null, 'uploads/');
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname);
+  }
+});
+var upload = multer({ storage: _storage });
 
 var mongoose = require("mongoose");
 
@@ -45,7 +45,7 @@ router.get('/new', isLoggedIn, function(req,res){
 
 
 //글쓰는 코딩
-router.post('/', isLoggedIn, function(req,res){
+router.post('/', isLoggedIn, upload.single('avatar'), function(req,res){
   // console.log(req.file);
   req.body.post.author = req.user._id;
 
