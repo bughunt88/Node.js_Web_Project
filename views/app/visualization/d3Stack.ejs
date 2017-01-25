@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
   <% include ../partials/nav %>
 <title>D3 Exam</title>
 <style>
@@ -11,6 +9,7 @@ body{
   font-family:'Hanna';
 }
 </style>
+<script src="/libs/js/d3.v4.min"></script>
 <div class="outer">
   <h1>한국 지역별, 나이별 인구분포</h1>
 
@@ -27,7 +26,6 @@ body{
   </div>
 </div>
 
-<script src="http://d3js.org/d3.v4.min.js"></script>
 <script>
 function addTotalsColumn(d, i, columns) {
   for (i = 1, t = 0; i < columns.length; ++i){
