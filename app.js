@@ -70,8 +70,8 @@ app.use('/boards', require('./routes/boards'));
 
 
 
-
+var port = process.env.PORT || 5000;
 // start server
-app.listen(3000, function(){
+app.listen(port, function(){
   console.log('Server On!');
 });
