@@ -10,16 +10,16 @@ var flash          = require('connect-flash'); //session에 한번 저장해서 
 var mongo          = require('mongodb');
 var Grid           = require('gridfs-stream');
 var fs             = require("fs");
-var multer         = require("multer");
-var _storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-   cb(null, 'uploads/');
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.originalname);
-  }
-});
-var upload = multer({ storage: _storage });
+// var multer         = require("multer");
+// var _storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//    cb(null, 'uploads/');
+//   },
+//   filename: function (req, file, cb) {
+//     cb(null, file.originalname);
+//   }
+// });
+// var upload = multer({ storage: _storage });
 
 app.use('/user',express.static('uploads'));
 

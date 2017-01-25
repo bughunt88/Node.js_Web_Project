@@ -8,8 +8,8 @@
     "start": "NODE_ENV=development node webpack/server.dev.js",
     "build": "NODE_ENV=production webpack --config webpack/webpack.prod.babel.js --colors -p",
     "serve": "NODE_ENV=production node webpack/server.prod.js",
-      "pagespeed": "./webpack/pagespeed",
-      "setup": "NODE_ENV=initialisation ./webpack/init"
+    "pagespeed": "./webpack/pagespeed",
+    "setup": "NODE_ENV=initialisation ./webpack/init"
   },
   "repository": {
     "type": "git",
@@ -33,6 +33,7 @@
     "method-override": "^2.3.5",
     "mongoose": "^4.7.7",
     "mongoose-session": "0.0.4",
+    "multer": "^1.2.1",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "util": "^0.10.3"
