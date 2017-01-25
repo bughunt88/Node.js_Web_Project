@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<% include ../partials/nav.ejs %>
+	<link rel="stylesheet" href="/stylesheets/mypage_css.css">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>D3 Exam</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Document</title>
+	</head>
+
+	<body>
+
+
+
+		<div class="container">
+			<div class="col-md-12">
+
+				<h2 class="text-center">회원 정보</h2>
+				<hr>
+
+
+
+				<table class="table" class="text-center">
+
+					<thead>
+						<tr id="toptable">
+							<th width="55%">Email</th>
+							<th width="15%">Nickname</th>
+							<th width="15%">가입일</th>
+						</tr>
+
+						<tr>
+							<td>
+								<small><%= user.email %></small>
+							</td>
+							<td>
+								<small><%= user.nickname %></small>
+							</td>
+
+							<td>
+								<small><%= user.createdAt.toLocaleDateString() %></small>
+							</td>
+						</tr>
+
+
+
+					</thead>
+
+				</table>
+
+				<br>
+				<br>
+				<br>
+				<br>
+
+				<h2 class="text-center">내가 쓴글</h2>
+				<hr>
+				<% if(board=="") { %>
+
+					<br />
+					<h2 id="mm">	쓴 글이 없습니다</h2>
+					<br />
+
+
+					<% }else{%>
+
+
+						<table class="table" class="text-center">
+							<thead>
+								<tr id="toptable">
+									<th width="55%">Title</th>
+									<th width="15%">category</th>
+									<th width="15%">Date</th>
+									<th width="15%">수정/삭제</th>
+								</tr>
+							</thead>
+
+							<tbody>
+								<% for(var i=0; i< board.length ; i++){ %>
+									<tr>
+
+										<td>
+											<%= board[i].title %> &nbsp;
+										</td>
+
+										<td>
+											<%= board[i].category%>
+										</td>
+
+										<td>
+											<%= board[i].createdAt.toLocaleDateString() %>
+										</td>
+
+
+										<td>
+											<% include ./edit_button.ejs %>
+												<% include ./delete_button.ejs %>
+										</td>
+
+										<% } %>
+									</tr>
+							</tbody>
+						</table>
+						<% } %>
+
+
+							</hr>
+			</div>
+		</div>
+
+		<% include ../partials/footer.ejs %>
+
+
+	</body>
+
+</html>

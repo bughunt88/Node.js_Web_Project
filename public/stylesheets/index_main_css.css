@@ -1,0 +1,125 @@
+
+
+html {
+	position: relative;
+	min-height: 100%;
+}
+body {
+	margin-top: 10%;
+  margin-bottom: 10%;
+	font-family:'Hanna';
+}
+
+#footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	/* Set the fixed height of the footer here */
+	height: 60px;
+	background-color: #f5f5f5;
+	background: black;
+	color:white;
+}
+
+			#item{
+				width:1000px;
+				height:500px;
+				margin:0 700;
+				top:200px;
+				position: relative;
+
+			}
+			ul{
+				list-style-type: none;
+			}
+			#item44{
+				background-color: #000000;
+				color: black;
+
+				font-weight: bold;
+
+			}
+			.ko{
+				color: white;
+				font-size:0.5em;
+
+			}
+
+.modal-img img{
+
+	width:100%;
+	height:auto;
+padding:50px 50px 50px 50px;
+
+
+}
+
+
+.modal .modal-dialog
+{
+  display: block;
+  width: 70%;
+}
+.modal .modal-title{
+  font-size:25px;
+  font-style: bold;
+}
+.modal .modal-body{
+  line-height: 30px;
+  letter-spacing: 2px;
+  text-align: left;
+  padding-left: 50px;
+  padding-right: 50px;
+  font-size:20px;
+}
+.modal .nickname,.modal .data{
+  text-align: right;
+}
+.btn {
+  background: #000000;
+  color: #ffffff;
+}
+
+
+.btn:hover {
+  background: #5d6c70;
+  -webkit-transition: ease-in-out 0.5s;
+  color:#ffffff;
+}
+.btn:focus{
+  border-color: black;
+  color:white;
+}
+
+/*-----modal comment-----*/
+  .btn-group{
+    padding-right: 30px;
+  }
+  .thin{
+    border-width: 1px;
+  }
+
+  .top{
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-size:18px;
+  }
+
+  .commentAdd{
+    margin-top: 30px;
+  }
+
+  .createdAt{
+    font-size: 12px;
+  }
+    .delete{
+    display: inline;
+
+  }
+ .body{
+  display: block;
+ }
+ hr{
+  border-width: 3px;
+  border-color: black;
+}

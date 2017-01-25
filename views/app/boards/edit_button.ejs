@@ -1,0 +1,53 @@
+  <form role="form" id="edit-form" class="posts_form" , action="/boards/<%=board[i]._id%>?_method=put" , method="post">
+	                  <div id="myModa<%=i%>" class="modal fade in">
+	                    <div class="modal-dialog">
+	                      <div class="modal-content">
+
+	                        <div class="modal-header">
+	                          <div class="col-md-6">
+
+
+	                            <a data-dismiss="modal"></a>
+	                            <input type="text" name="board[title]" value="<%=board[i].title%>" id="board[title]">
+
+	                          </div>
+
+	                          <div class=" col-xs-6 col-md-4">
+
+	                            <select id="board[category]" name="board[category]" class="form-control">
+	                              <option value="null" disabled="true" selected="<%board[i].category%>">category</option>
+	                            <option value="question">질문</option>
+	                            <option value="study">공부</option>
+	                          </select>
+	                          </div>
+
+	                          </h4>
+
+	                        </div>
+	                        <div class="modal-body">
+	                          <textarea class="form-control textarea" rows="4" name="board[body]" id="board[body]" style="resize: none;"><%=board[i].body%></textarea>
+	                        </div>
+	                        <div class="modal-footer">
+	                          <div class="btn-group">
+
+	                            <button type="submit" class="btn main-btn"><span class="glyphicon glyphicon-check"></span> Save</button>
+	                            <button class="btn main-btn " data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+
+	                          </div>
+	                        </div>
+
+	                      </div>
+	                      <!-- /.modal-content -->
+	                    </div>
+	                    <!-- /.modal-dalog -->
+	                  </div>
+	                  <!-- /.modal -->
+
+	                  <a data-toggle="modal" href="#myModa<%=i%>">	<% if(user && user.equals(board[i].author._id)) { %>
+	                  <button  class="btn main-btn btn-sm">수정</button> <% } %></a>
+
+	                </form>
+
+
+
+	                <!-- Delete button here -->

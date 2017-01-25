@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../partials/nav %>
+    <title>D3 Exam</title>
+    <link rel="stylesheet" href="/stylesheets/post_show_css.css">
+  </head>
+  <body>
+
+
+	<div class="container">
+  <div class="row">
+  <div class="col-sm-offset-2 col-sm-8 col-sm-offset-2">
+
+  <div>
+  <h3 class="title"><%= post.title %></h3>
+  <p class="time">Created at <br>
+    <%= post.createdAt.toLocaleDateString() %> <br>
+    <%= post.createdAt.toLocaleTimeString() %>
+  </p>
+  </div>
+  <hr>
+
+
+  <label>글 내용</label>
+
+  <% if(post.filename) {%>
+	<img src="/user/<%= post.filename %>" alt="">
+	<% } %>
+
+  <p class="body"><%= post.body %><p>
+
+
+  <hr>
+
+<br><br><br><br>
+
+    <div class="comments">
+      <h4>Comments (<%= post.comments?post.comments.length:"0" %>)</h4>
+
+
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+
+      <% if(post.comments) { %>
+        <% post.comments.forEach(function(comment){ %>
+            <div class="comment">
+
+
+            <div class="top">
+            <% if(user && user.equals(comment.author._id)) { %>
+
+                <form class="delete"  method="post"
+                  action="/posts/<%=post._id%>/comments/<%=comment._id%>?_method=delete">
+                    <button type="submit" class="btn btn-defalut btn-xs" > x </button>
+                </form>
+
+              <% } %>
+              <span class="nickname"><b><%= comment.author.nickname %> / </b></span>
+              <span class="createdAt"><%= comment.author.createdAt.toLocaleDateString() %></span>
+              <hr class="thin">
+            </div>
+
+  <div class="body1"><%= comment.body %></div>
+  <hr>
+          </div>
+        <% }) %>
+      <% } %>
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+      <form class="addComment checkValidation"
+        action="/posts/<%=post._id%>/comments?" method="post">
+        <textarea class="cvRequired col-sm-6" type="text" name="comment[body]"
+          cvRqErrMsg="comments is empty." cvRqErrTo="#cvErrTitle" <%= user?"":"disabled" %>
+          placeholder="<%= user?"Add comment here":"Please login to make a comment" %>"></textarea>
+        <button class="btn commentAdd" id="deleteBtn" type="submit"  > Comment</button>
+        <div id="cvErrTitle" class="message"></div>
+      </form>
+
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+      </div>
+
+
+<br><br>
+
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+
+  <div class="tools">
+  <a href="/posts"><button class="btn">Back</button></a>
+    <a href="/posts/<%=post._id%>/edit" id="EditBtn"><button class="btn">Edit</button></a>
+    <!-- Delete button here -->
+    <form class="btn_delete" action="/posts/<%=post._id%>?_method=delete" method="post">
+      <button type="submit" class="btn">Delete</button>
+    </form>
+  </div>
+
+
+  <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+
+
+
+    </div>
+</div>
+</div>
+
+  <footer>
+      <% include ../partials/footer %>
+    </footer>
+
+  </body>
+</html>

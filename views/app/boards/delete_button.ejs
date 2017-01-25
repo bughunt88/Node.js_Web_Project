@@ -1,0 +1,24 @@
+<form class="btn_delete" action="/boards/<%=board[i]._id%>?_method=delete" method="post">
+  <div id="delModa<%=i%>" class="modal fade in">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <a data-dismiss="modal"></a>
+          <h4 class="modal-title">삭제하시겠습니까?</h4>
+        </div>
+        <div class="modal-footer">
+          <div class="btn-group">
+            <button class="btn main-btn "><span class="glyphicon glyphicon-check"></span> 네</button>
+            <button class="btn main-btn " data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> 아니요</button>
+          </div>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dalog -->
+  </div>
+  <!-- /.modal -->
+  <a data-toggle="modal" href="#delModa<%=i%>"><% if(user && user.equals(board[i].author._id)) { %>
+      <button  class="btn main-btn btn-sm" id="deleteBtn"> 삭제 </button></a>
+  <% } %>
+</form>

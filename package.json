@@ -1,32 +1,40 @@
 {
-  "name": "node-js-getting-started",
-  "version": "0.2.5",
-  "description": "A sample Node.js app using Express 4",
-  "engines": {
-    "node": "5.9.1"
-  },
-  "main": "index.js",
+  "name": "nodejs111",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
   "scripts": {
-    "start": "node index.js"
-  },
-  "dependencies": {
-    "cool-ascii-faces": "1.3.4",
-    "ejs": "2.4.1",
-    "express": "4.13.3"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "NODE_ENV=development node webpack/server.dev.js",
+    "build": "NODE_ENV=production webpack --config webpack/webpack.prod.babel.js --colors -p",
+    "serve": "NODE_ENV=production node webpack/server.prod.js",
+      "pagespeed": "./webpack/pagespeed",
+      "setup": "NODE_ENV=initialisation ./webpack/init"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/heroku/node-js-getting-started.git"
+    "url": "git+https://github.com/imtaekh/my_app.git"
   },
-  "keywords": [
-    "node",
-    "heroku",
-    "express"
-  ],
-  "license": "MIT",
+  "author": "",
+  "license": "ISC",
   "bugs": {
-    "url": "https://github.com/heroku/node-js-getting-started/issues"
+    "url": "https://github.com/imtaekh/my_app/issues"
   },
-  "homepage": "https://github.com/heroku/node-js-getting-started#readme",
-  "author": ""
+  "homepage": "https://github.com/imtaekh/my_app#readme",
+  "dependencies": {
+    "async": "^2.1.4",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.14.1",
+    "connect-flash": "^0.1.1",
+    "ejs": "^2.3.3",
+    "express": "^4.13.3",
+    "express-session": "^1.14.2",
+    "gridfs-stream": "^1.1.1",
+    "method-override": "^2.3.5",
+    "mongoose": "^4.7.7",
+    "mongoose-session": "0.0.4",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "util": "^0.10.3"
+  }
 }

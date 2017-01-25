@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<title>D3 Exam</title>
+    <% include ../partials/nav %>
+		<link rel="stylesheet" href="/stylesheets/user_show_css.css">
+</head>
+
+<style media="screen">
+
+</style>
+
+<body>
+
+    <header>
+
+        <% include ../partials/header %>
+
+    </header>
+
+<br />
+    <div class="container">
+        <div class="col-md-offset-3 col-md-6 col-md-offset-3">
+            <div class="panel panel-black">
+                <div class="panel-heading">
+                    <h3 class="panel-title">회원 정보</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="content">
+                      <br />
+                      <br />
+                      <br />
+                        <p class="user_info">Email<small> : <%= user.email %></small></p>
+                        <p class="user_info">Nickname<small> : <%= user.nickname %></small></p>
+                        <p class="user_info">가입일<small> : <%= user.createdAt.toLocaleDateString() %></small></p>
+                        <br />
+                        <br />
+                        <br />
+                        <!-- <a href="/users/<%=user._id%>/edit"><button>Edit</button></a> -->
+                    </div>
+                </div>
+            </div>
+            <div >
+                <a href="javascript:history.back()"><button class="btn">Back</button></a>
+            </div>
+        </div>
+    </div>
+
+
+    <footer>
+  <% include ../partials/footer.ejs %>
+
+    </footer>
+
+</body>
+
+</html>

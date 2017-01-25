@@ -1,0 +1,89 @@
+
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+
+.btn {
+  background: #000000;
+  color: #ffffff;
+
+}
+body {
+  font-family:'Hanna';
+}
+
+/*---------------버튼-------------------*/
+
+.btn, #signinButton {
+  background: #000000;
+  color: #ffffff;
+}
+.btn:hover {
+  background: #5d6c70;
+  -webkit-transition: ease-in-out 0.5s;
+  color:#ffffff;
+}
+.btn:focus{
+  border-color: black;
+  color:white;
+}
+/*---------------버튼-------------------*/
+#error{
+  text-align: center;
+}
+
+#login-dp{
+    min-width: 250px;
+    padding: 14px 14px 0;
+    overflow:hidden;
+    background-color:rgba(255,255,255,.8);
+}
+#login-dp .help-block{
+    font-size:12px
+}
+#login-dp .bottom{
+    background-color:rgba(255,255,255,.8);
+    border-top:1px solid #ddd;
+    clear:both;
+    padding:14px;
+}
+#login-dp .social-buttons{
+    margin:12px 0
+}
+#login-dp .social-buttons a{
+    width: 49%;
+}
+#login-dp .form-group {
+    margin-bottom: 10px;
+}
+@media(max-width:768px){
+    #login-dp{
+        background-color: inherit;
+        color: #fff;
+    }
+    #login-dp .bottom{
+        background-color: inherit;
+        border-top:0 none;
+    }
+}
+
+   #topNav{
+  top:0;
+  position: fixed;
+  transition: all 0.4s ease;
+  width:100% ;
+  z-index: 1 ;
+  height:7%;
+}
+
+#topNav.sticky {
+
+  background: black;
+  border-color: black;
+  transition: all 0.4s ease;
+}
+
+#topNav.sticky #homeBtn, #topNav.sticky .navbar-nav .navBar a{
+  color:white;
+}
+#topNav.sticky #homeBtn, #topNav.sticky .navbar-nav .navBar{
+  color:white;
+}

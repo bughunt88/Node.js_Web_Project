@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <% include ../partials/nav %>
+    <title>D3 Exam</title>
+</head>
+<link rel="stylesheet" href="/stylesheets/post_edit_css.css">
+
+<body>
+    <div class="container">
+
+        <!-- main start-->
+
+        <!-- views/posts/index.ejs -->
+        <div class="row">
+            <div class="col-sm-offset-2 col-sm-10 col-sm-offset-2">
+            <h3>Edit Post</h3>
+            <form class="posts_form" action="/posts/<%=post._id%>?_method=put" method="post">
+
+                <div class="ho3">
+                    <label>Title</label>
+                </div>
+                <div class="ho1">
+                    <input type="text" name="post[title]" value="<%=post.title%>" class="ho2 col-sm-6">
+                </div>
+                <br><br><br>
+
+                <div class="ho3">
+                    <label>Body</label>
+                </div>
+
+                <div class="ho">
+                    <textarea name="post[body]" class="col-sm-6"><%=post.body%></textarea>
+                </div>
+                <br><br><br><br>
+                <button type="submit" class="btn">Submit</button>
+            </form>
+            <br>
+            <a href="javascript:history.back()"><button class="btn">Back</button></a>
+            </div>
+        </div>
+
+<!-- main end -->
+    </div><!--posts end -->
+    <footer>
+      <% include ../partials/footer %>
+    </footer>
+  </body>
+</html>

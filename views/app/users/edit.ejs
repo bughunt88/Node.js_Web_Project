@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<title>D3 Exam</title>
+    <% include ../partials/nav %>
+        <link rel="stylesheet" href="/stylesheets/user_edit_css.css">
+</head>
+
+
+<body>
+
+    <header>
+
+        <% include ../partials/header %>
+
+    </header>
+
+
+<div class="col-md-offset-2 col-md-8 col-md-offset-2">
+<legend class="title">회원 정보 수정</legend>
+</div>
+
+    <div class="container">
+        <div class="col-md-offset-3 col-md-8">
+            <div class="users">
+                <div class="edir">
+                    <form id="update_user" class="form-horizontal" action="/users/<%= user._id %>?_method=put" method="post">
+                        <fieldset>
+                            <!-- Form Name -->
+
+                            <!-- Text input-->
+                            <div class="form-group">
+                              <br />
+                                <label class="col-md-3 control-label" for="bookdate">Current Password*</label>
+                                <div class="col-md-4" id="nam">
+                                    <input type="password" id="password" name="user[password]" placeholder="Password*" class="form-control input-md">
+                                    <div class="red1">
+                                        <span id="password_error" class="error_message"><%= passwordError?passwordError:"" %></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="coname">Email*</label>
+                                <div class="col-md-4" id="nam">
+                                    <input placeholder="Email*" class="form-control input-md" type="text" id="email" name="user[email]" value="<%= formData?formData.email:(user?user.email:" ") %>">
+                                    <div class="red1">
+                                        <span id="email_error" class="error_message"><%= emailError?emailError:"" %></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="booktype">Nickname* </label>
+                                <div class="col-md-4" id="nam">
+                                    <input placeholder="Nickname*" class="form-control input-md" type="text" id="nickname" name="user[nickname]" value="<%= formData?formData.nickname:(user?user.nickname:" ") %>">
+                                    <div class="red1">
+                                        <span id="nickname_error" class="error_message"><%= nicknameError?nicknameError:"" %></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="bookguests">New Password</label>
+                                <div class="col-md-4" id="nam">
+                                    <input placeholder="New Password" class="form-control input-md" type="password" id="new_password" name="user[newPassword]" value="">
+                                </div>
+                            </div>
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="bookmin">Password Confirmation</label>
+                                <div class="col-md-4" id="nam">
+                                    <input placeholder="Password Confirmation" class="form-control input-md" type="password" id="password_confirmation" name="user[passwordConfirmation]" value="">
+                                    <div class="red1">
+                                        <span id="password_confirmation_error" class="error_message"></span>
+                                    </div>
+                                    <div class="required">
+
+                                      <p><small>*Required</small></p>
+
+                                    </div>
+                                    <br />
+                                        <input type="button" class="btn" value="submit" id="btn">
+                                </div>
+                            </div>
+
+
+
+                        </fieldset>
+
+                        <!-- 버튼 부분 -->
+
+
+
+
+
+                        <script type="text/javascript" src="/js/userform.js"></script>
+                    </form>
+
+
+                </div>
+
+            </div>
+            <!--  -->
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <footer>
+        <% include ../partials/footer.ejs %>
+    </footer>
+
+</body>
+
+</html>

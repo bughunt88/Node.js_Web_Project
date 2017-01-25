@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../partials/nav %>
+    <title>D3 Exam</title>
+  </head>
+  <body>
+    <link rel="stylesheet" href="/stylesheets/post_new_css.css">
+<div class="container">
+<div class="col-sm-offset-2 col-sm-8 col-sm-offset-2">
+
+    <div class="posts">
+
+<!-- main start-->
+
+<!-- views/posts/index.ejs -->
+<div class="new">
+  <br>
+  <br>
+  <br>
+  <h3>New Post</h3>
+  <form class="posts_form" action="/posts" method="post" enctype="multipart/form-data">
+  <div class="form-group">
+    <label>Title:</label>
+    <input type="text" name="post[title]" value="" class="col-sm-6 form-control">
+   </div>
+  <div class="form-group">
+    <label>Body:</label>
+    <textarea name="post[body]" class="col-sm-6 form-control" height="300"></textarea>
+   </div>
+   <br> <br> <br> <br>
+    <input type="file" name="avatar" class="btn" value="file"/>
+
+    <button type="submit" class="btn">Submit</button>
+  </form>
+  <br>
+  <a href="/posts"><button class="btn">Back</button><a>
+</div>
+
+<!-- main end -->
+    </div><!--posts end -->
+    </div>
+    </div>
+    <footer>
+      <% include ../partials/footer %>
+    </footer>
+  </body>
+</html>

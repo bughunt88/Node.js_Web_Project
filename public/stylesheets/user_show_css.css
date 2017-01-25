@@ -1,0 +1,68 @@
+html, body, ul, li, a{
+  margin:0;
+  padding:0;
+  font-family:'Hanna';
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+.panel-heading{
+  background-color: #000000
+}
+
+.panel-title{
+  color: #ffffff;
+  font-size: 40px;
+  font-family: arial;
+  text-align:  center;
+}
+
+.btn {
+  background: #000000;
+  color: #ffffff;
+}
+
+
+.btn:hover {
+  background: #5d6c70;
+  -webkit-transition: ease-in-out 0.5s;
+  color:#ffffff;
+}
+.btn:focus{
+  border-color: black;
+  color:white;
+}
+
+/**/
+
+
+p{
+  font-size: 25px;
+  font-family: arial;
+  text-align:  center;
+}
+
+
+
+
+
+
+
+#footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	/* Set the fixed height of the footer here */
+	height: 60px;
+	background-color: #f5f5f5;
+	background: black;
+	color:white;
+}

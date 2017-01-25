@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <link rel="stylesheet" href="/stylesheets/user_new_css.css">
+<title>D3 Exam</title>
+        <link href="/libs/bootstrap/dist/css/bootstrap.min.css" type="text/css" rel="stylesheet" media="screen">
+        <link href="/libs/bootstrap/dist/css/bootstrap-theme.min.css" type="text/css" rel="stylesheet" media="screen">
+
+  </head>
+
+  <body>
+
+    <header>
+
+      <% include ../partials/header %>
+
+    </header>
+
+
+
+    <div class="users">
+
+<!-- main start-->
+
+
+
+<!-- views/users/new.ejs -->
+
+<div class="new">
+
+  <h3>Sign Up</h3>
+
+
+  <form id="create_user" class="users_form" action="/users" method="post">
+
+
+
+    <label>Email* <span id="email_error" class="error_message"><%= emailError?emailError:"" %></span></label>
+
+    <input type="text" id="email" name="user[email]" value="<%= formData?formData.email:"" %>" class="form-control">
+
+    <label>Nickname* <span id="nickname_error" class="error_message"><%= nicknameError?nicknameError:"" %></span></label>
+
+    <input type="text" id="nickname" name="user[nickname]" value="<%= formData?formData.nickname:"" %>" class="form-control">
+
+    <label>Password* <span id="password_error" class="error_message"><%= passwordError?passwordError:"" %></span></label>
+
+    <input type="password" id="password" name="user[password]" value="" class="form-control">
+
+    <label>Password Confirmation* <span id="password_confirmation_error" class="error_message"></span></label>
+
+    <input type="password" id="password_confirmation" name="user[passwordConfirmation]" value="" class="form-control">
+
+    <p><small>*Required</small></p>
+
+    <input type="button" class="btn" value="Submit">
+
+  </form>
+
+  <a href="javascript:history.back()"><button class="btn">Back</button>
+
+</div>
+
+<!-- javascript -->
+
+<script type="text/javascript" src="/libs/jquery/dist/userform.js"></script>
+
+
+<!-- main end -->
+
+    </div><!--users end -->
+
+    <footer>
+
+
+    </footer>
+
+  </body>
+
+</html>

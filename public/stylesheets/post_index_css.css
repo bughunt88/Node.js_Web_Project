@@ -1,0 +1,55 @@
+/*footer*/
+html, body, ul, li, a{
+  margin:0;
+  padding:0;
+  font-family:'Hanna';
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+  background: black;
+  color:white;
+}
+
+/* 컴펌버튼---------------------*/
+.btn {
+  background: #000000;
+
+  color: #ffffff;
+
+  float: right;
+}
+.btn:hover {
+  background: #5d6c70;
+  -webkit-transition: ease-in-out 0.5s;
+  color:#ffffff;
+}
+.btn:focus{
+  border-color: black;
+  color:white;
+}
+
+
+/*테두리*/
+hr{
+  border-width: 3px;
+  border-color: black;
+}
+.table tr, .table th, .table td{
+  border-style: solid;
+  border-width: 3px;
+  border-color: black;
+}

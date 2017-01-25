@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include ../partials/nav.ejs %>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+    <script src="controller/controller.js"></script>
+
+        <meta charset="UTF-8">
+        <title>D3 Exam</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+
+
+</head>
+
+<body ng-controller="helloants">
+
+
+
+
+    <div class="container-fulid">
+
+        <!-- @@@@@@@@@@가장 외각@@@@@@@@@@@@@ -->
+
+<div class="row">
+       <div class="col-sm-3 text-center" name="nn">
+
+
+      <div class="container">
+
+
+        <div class="col-sm-3 nav nav-pills nav-stacked" data-spy="affix" >
+          <h5>Table of Contents</h5>
+            <hr class="no-margin">
+            <ul class="list-unstyled">
+
+            <!-- 아이디 속성으로 검색 창을 찾는다 -->
+
+            <li>
+              <a href="#write" id='ss' > <span class="fa fa-home"></span>글쓰기
+              </a>
+            </li>
+
+              <!-- 아이디 속성으로 검색 창을 찾는다 -->
+              <li>
+
+                <a href="#question" > <span class="fa fa-home"></span>질문
+                </a>
+              </li>
+              <!-- fa-angle-double-right는 네비게이션 아이콘이다 -->
+              <li>
+                <a href="#column1"> <span class="fa fa-angle-double-right text-primary"></span>공부
+                </a>
+              </li>
+              <li>
+                <a href="#setting-up-our-page"> <span class="fa fa-angle-double-right text-primary"></span>Setting up our page
+                </a>
+              </li>
+              <li>
+                <a href="#conclusion"> <span class="fa fa-angle-double-right text-primary"></span>Conclusion
+                </a>
+              </li>
+
+
+            </ul>
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+        <!--@@@@@@@ 중간 외각@@@@ -->
+
+<style>
+      .time{
+        float: right;
+      }
+      .title{
+        font-size: 40px ;
+       font-style: italic;
+
+      }
+      .body{
+        font-size: 18px;
+        word-spacing: 2px;
+        line-height: 1.5em;
+      }
+      .btn{
+        background-color: #8b98a0;
+        float: right;
+
+      }
+      .nickname{
+        font-size:20px;
+       font-style: italic;
+       color:blue;
+      }
+      #deleteBtn{
+        margin-right: 10px;
+      }
+      .cvRequired{
+        height:100px;
+      }
+    </style>
+
+  <div ng-repeat="image in imageList">
+        <div class="col-sm-offset-1 col-sm-7" name="mm">
+
+
+
+            <div class="show">
+
+        <div>
+              <span class="title"><%= boards.title %></span>
+               <span class="time"> Created at <br>
+                <%= boards.createdAt.toLocaleDateString() %> <br>
+                <%= boards.createdAt.toLocaleTimeString() %>
+              </span>
+              <hr>
+         </div>
+              <p class="body">
+
+                <%= boards.body %>
+                <p>
+              <br><br>
+<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 댓글 뿌려주기 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+
+                <div class="comments">
+                  <h4>Comments (<%= boards.comments?boards.comments.length:"0" %>)</h4>
+                  <hr>
+
+                  <% if(boards.comments) { %>
+                    <% boards.comments.forEach(function(comment){ %>
+
+                      <div class="comment">
+                        <div class="top">
+                          <span class="nickname"><%= comment.author.nickname %></span>
+                          <% if(user && user.equals(comment.author._id)) { %>
+                            <form class="delete"  method="post"
+                              action="/boards/<%=boards._id%>/comments/<%=comment._id%>?_method=delete">
+                                <button type="submit" class="btn btn-defalut" > x </button>
+                            </form>
+                          <% } %>
+
+                        </div>
+                        <div class="body"><%= comment.body %></div>
+
+                      </div>
+                      <hr>
+                    <% }) %>
+                  <% } %>
+<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+                <div class="row">
+                  <form class="addComment checkValidation"
+                    action="/boards/<%=boards._id%>/comments?" method="post">
+
+                    <textarea class="col-sm-10 cvRequired" type="text" name="comment[body]"
+                      cvRqErrMsg="comments is empty." cvRqErrTo="#cvErrTitle" <%= user?"":"disabled" % >
+                      placeholder="<%= user?"Add comment here":"Please login to make a comment" %>"></textarea>
+
+                    <button type="submit" class="btn btn-primary" <%= user?"":"disabled" %>>Comment</button>
+                    <div id="cvErrTitle" class="message"></div>
+                  </form>
+                 </div>
+
+                </div>      <!-- 코맨트 디브 닫힘 -->
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+</div>
+
+</div>
+
+<!-- @@@@@중간 외각 끝@@@@@@@@@@ -->
+
+    </div>
+    <div class="row">
+  <footer class="footer text-center">
+    <p>DRAFT</p>
+  </footer>
+
+    </div>
+    </div>
+
+  <!-- @@@@@@@@@@가장 외각 끝@@@@@@@@@@@@@ -->
+
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+<div id="myModal<%=i%>" class="modal fade in">
+	<div class="modal-dialog">
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<h4 class="modal-title"><%= boards1[i].title %></h4>
+					<div class="nickname date">
+						<b><%= boards1[i].author.nickname %></b>
+						<br>
+						<p class="createdAt"><%= boards1[i].createdAt.toLocaleDateString() %></p>
+					</div>
+			</div>
+<div class="modal-body">
+
+<!-- 사진 보이기 부분 -->
+	<% if(boards1[i].filename) {%>
+	<img src="/user/<%= boards1[i].filename %>" alt="">
+	<% } %>
+<!-- 사진 보이기 부분 -->
+
+<%= boards1[i].body %>
+</div>
+
+
+<!-- 글 내용 안 닉네임 작성일 시작 -->
+
+<!-- 글 내용 안 닉네임 작성일 끝 -->
+
+<div class="modal-footer">
+
+<div class="row">
+	<!--댓글 시작  -->
+	<div class="btn-group col-sm-offset-8 col-sm-4
+	col-lg-offset-8 col-lg-4
+	col-xs-offset-1 col-xs-11
+	col-md-offset-8 col-md-4">
+		<div class="comments">
+			<h4>Comments (<%= boards1[i].comments?boards1[i].comments.length:"0" %>)</h4>
+			<hr>
+
+			<% if(boards1[i].comments) { %>
+				<% boards1[i].comments.forEach(function(comment){ %>
+
+					<div class="comment">
+						<div class="top">
+						<% if(user && user.equals(comment.author._id)) { %>
+
+								<form class="delete"  method="post"
+									action="/boards/<%=boards1[i]._id%>/comments/<%=comment._id%>?_method=delete">
+										<button type="submit" class="btn btn-defalut btn-xs" > x </button>
+								</form>
+
+							<% } %>
+							<span class="nickname"><b><%= comment.author.nickname %> / </b></span>
+							<span class="createdAt"><%= comment.author.createdAt.toLocaleDateString() %></span>
+							<hr class="thin">
+						</div>
+
+
+						<div class="body" width="200px"><%= comment.body %></div>
+
+
+
+					</div>
+					<hr>
+				<% }) %>
+			<% } %>
+		<div>
+			<form class="addComment checkValidation"
+				action="/boards/<%=boards1[i]._id%>/comments?" method="post">
+
+				<textarea class="col-sm-12 cvRequired" type="text" name="comment[body]"
+					cvRqErrMsg="comments is empty." cvRqErrTo="#cvErrTitle" <%= user?"":"disabled" %>
+					placeholder="<%= user?"Add comment here":"Please login to make a comment" %>"></textarea>
+
+				<button type="submit" class="btn btn-primary commentAdd" <%= user?"":"disabled" %>>Comment</button>
+				<div id="cvErrTitle" class="message"></div>
+			</form>
+		 </div>
+
+		</div>
+	</div>
+	<!-- 댓글 끝 -->
+	</div>
+</div>
+
+
+</div><!-- /.modal-content -->
+</div><!-- /.modal-dalog -->
+</div><!-- /.modal -->
