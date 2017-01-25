@@ -47,7 +47,7 @@ router.get('/new', isLoggedIn, function(req,res){
 
 
 //글쓰는 코딩
-router.post('/', isLoggedIn, function(req,res){
+router.post('/', isLoggedIn, upload.single('avatar'), function(req,res){
   // console.log(req.file);
   req.body.post.author = req.user._id;
 
