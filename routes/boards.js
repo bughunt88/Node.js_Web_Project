@@ -3,16 +3,7 @@ var app      = express();
 var Board    = require('../models/Board');
 
 var fs = require("fs");
-var multer = require("multer");
-var _storage = multer.diskStorage({
- destination: function (req, file, cb) {
-   cb(null, 'uploads/');
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.originalname);
-  }
-});
-var upload = multer({ storage: _storage });
+
 
 var mongoose = require("mongoose");
 
@@ -72,7 +63,7 @@ app.get('/', [boards, boards1], function(req,res){
 
 
 //글쓰는 코딩
-app.post('/', isLoggedIn, upload.single('avatar') , function(req,res){
+app.post('/', isLoggedIn, function(req,res){
 
 req.body.board.author = req.user._id;
 
