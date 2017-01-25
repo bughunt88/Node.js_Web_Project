@@ -14,7 +14,7 @@ var _storage = multer.diskStorage({
 });
 var upload = multer({ storage: _storage });
 
-app.use('/user',express.static('uploads'));
+router.use('/user',express.static('uploads'));
 
 var mongoose = require("mongoose");
 
