@@ -46,24 +46,24 @@ router.get('/new', isLoggedIn, function(req,res){
 });
 
 
-//글쓰는 코딩
-router.post('/', isLoggedIn, upload.single('avatar'), function(req,res){
-  // console.log(req.file);
-  req.body.post.author = req.user._id;
-
-  if(req.file){
-  req.body.post.filename = req.file.originalname;
-  req.body.post.fileid = req.filepath;
-  Post.create(req.body.post,function (err,post) {
-    if(err) return res.json({success:false, message:err});
-    res.redirect('/posts');
-  });
-}else{
-  Post.create(req.body.post,function (err,post) {
-    if(err) return res.json({success:false, message:err});
-    res.redirect('/posts');
-  });}
-});
+// //글쓰는 코딩
+// router.post('/', isLoggedIn, upload.single('avatar'), function(req,res){
+//   // console.log(req.file);
+//   req.body.post.author = req.user._id;
+//
+//   if(req.file){
+//   req.body.post.filename = req.file.originalname;
+//   req.body.post.fileid = req.filepath;
+//   Post.create(req.body.post,function (err,post) {
+//     if(err) return res.json({success:false, message:err});
+//     res.redirect('/posts');
+//   });
+// }else{
+//   Post.create(req.body.post,function (err,post) {
+//     if(err) return res.json({success:false, message:err});
+//     res.redirect('/posts');
+//   });}
+// });
 
 //글 상세 목록 보여주는 코딩
 router.get('/:id', function(req,res){
@@ -174,28 +174,28 @@ module.exports = router;
 // });
 
 
-//
-// //글쓰는 코딩
-// router.post('/', isLoggedIn, upload.single('avatar'), function(req,res){
-//
-//   var writestream = gfs.createWriteStream({
-//     filename: req.file.originalname
-//   });
-//   //
-//   // //pipe multer's temp file /uploads/filename into the stream we created above. On end deletes the temporary file.
-//   fs.createReadStream("./uploads/" + req.file.filename)
-//     .on("end", function(){fs.unlink("./uploads/"+ req.file.filename, function(err,file){
-//
-//               req.body.post.author = req.user._id;
-//               req.body.post.filename = req.file.originalname;
-//               req.body.post.fileid = req.filepath;
-//
-//               Post.create(req.body.post,function (err,post) {
-//                 if(err) return res.json({success:false, message:err});
-//                 res.redirect('/posts');
-//               });
-//
-//   });})
-//       .on("err", function(){res.send("Error uploading image");})
-//         .pipe(writestream);
-// });
+
+//글쓰는 코딩
+router.post('/', isLoggedIn, upload.single('avatar'), function(req,res){
+
+  var writestream = gfs.createWriteStream({
+    filename: req.file.originalname
+  });
+  //
+  // //pipe multer's temp file /uploads/filename into the stream we created above. On end deletes the temporary file.
+  fs.createReadStream("./uploads/" + req.file.filename)
+    .on("end", function(){fs.unlink("./uploads/"+ req.file.filename, function(err,file){
+
+              req.body.post.author = req.user._id;
+              req.body.post.filename = req.file.originalname;
+              req.body.post.fileid = req.filepath;
+
+              Post.create(req.body.post,function (err,post) {
+                if(err) return res.json({success:false, message:err});
+                res.redirect('/posts');
+              });
+
+  });})
+      .on("err", function(){res.send("Error uploading image");})
+        .pipe(writestream);
+});
