@@ -65,11 +65,39 @@ router.get('/new', isLoggedIn, function(req,res){
 //   });}
 // });
 
+var fileimage = function (req, res, next) {
+
+  gfs.findOne({ _id: req.params.id }, function (err, file) {
+    if (err) return res.status(400).send(err);
+    if (!file) return res.status(404).send('');
+
+    res.set('Content-Type', file.contentType);
+    res.set('Content-Disposition', 'attachment; filename="' + file.filename + '"');
+
+    var readstream = gfs.createReadStream({
+      _id: file._id
+    });
+
+    readstream.on("error", function(err) {
+      console.log("Got error while processing stream " + err.message);
+      res.end();
+    });
+
+    readstream.pipe(res);
+  });
+  // Board.find({category: 'question'}).populate(['author','comments.author']).sort('-createdAt').exec(function(err, xy){
+  //   req.session.boards = xy;
+  //   next();
+  // });
+};
+
+
+
 //글 상세 목록 보여주는 코딩
-router.get('/:id', function(req,res){
+router.get('/:id', [fileimage], function(req,res){
   Post.findById(req.params.id).populate(['author','comments.author']).exec(function (err,post) {
     if(err) return res.json({success:false, message:err});
-    res.render("app/posts/show", {post:post, user:req.user});
+    res.render("app/posts/show", {post:post, user:req.user, readstream:readstream});
   });
 });
 
