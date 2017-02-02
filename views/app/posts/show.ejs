@@ -24,12 +24,19 @@
 
   <label>글 내용</label>
 
-  <%=readstream%>
+
+
+
+
+
+<dir>
+
 
   <% if(post.filename) {%>
-	<img src="/user/<%= post.filename %>" alt="">
+	<img src="/posts/1/<%= post.filename %>" alt="">
 	<% } %>
 
+</dir>
   <p class="body"><%= post.body %><p>
 
 

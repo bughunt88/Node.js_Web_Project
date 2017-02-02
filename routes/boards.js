@@ -56,8 +56,6 @@ var boards1 = function (req, res, next) {
 
 app.get('/', [boards, boards1], function(req,res){
 
-  console.log(req.session.boards);
-
   res.render("app/boards/board_index", { user:req.user, boards:req.session.boards, boards1:req.session.boards1});
 
 

@@ -5,6 +5,30 @@ var passport = require('passport');
 var Post     = require('../models/Post');
 var session  = require('express-session'); // 데이터 session에 저장하는 페키지
 
+var fs = require("fs");
+var multer         = require("multer");
+var _storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+   cb(null, 'uploads/');
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname);
+  }
+});
+var upload = multer({ storage: _storage });
+
+router.use('/user',express.static('uploads'));
+
+var conn = mongoose.connection;
+
+var gfs;
+
+var Grid = require("gridfs-stream");
+Grid.mongo = mongoose.mongo;
+
+conn.once("open", function(){
+  gfs = Grid(conn.db);
+  });
 
 
 var path = require('path') ;
@@ -80,16 +104,6 @@ router.delete('/:postId/comments/:commentId', function(req,res){
       res.redirect("back");
   });
 }); //destroy a comment
-
-
-
-
-
-
-
-
-
-
 
 router.get('/logout', function(req, res) {
     req.logout();
